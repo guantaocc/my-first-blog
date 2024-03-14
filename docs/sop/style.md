@@ -133,6 +133,3 @@ import './user-theme.css' // [!code focus]
 
 export default BlogTheme
 ```
-
-## More
-... wait a moment

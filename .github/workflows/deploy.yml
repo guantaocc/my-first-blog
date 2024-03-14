@@ -71,8 +71,10 @@ jobs:
           echo ${{ github.workspace }}
           pnpm build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: docs/.vitepress/dist # The folder the action should deploy.
-     
+            github_token: ${{ secrets.PAT_TOKEN }} # 这一步很重要，单独看下面的大步骤，主要是用来给该脚本一些仓库权限
+            publish_dir: docs/.vitepress/dist # 指定该文件夹中的 dist 
+            publish_branch: gh-pages # 推送到关联仓库的 gh-pages 分支
+            dotfiles: true  # 包括在提交中，即使被 .gitignore 文件忽略
